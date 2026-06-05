@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YDC Media | Article and LinkedIn Post Writing Service</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #5f6b78;
+      --line: #dce4e8;
+      --paper: #f8f6ef;
+      --white: #ffffff;
+      --teal: #087f83;
+      --teal-dark: #075b60;
+      --coral: #e86d4d;
+      --gold: #d9a441;
+      --shadow: 0 22px 50px rgba(23, 33, 43, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px clamp(18px, 5vw, 64px);
+      background: rgba(248, 246, 239, 0.92);
+      border-bottom: 1px solid rgba(220, 228, 232, 0.8);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 3vw, 34px);
+      color: #34414e;
+      font-size: 0.95rem;
+      font-weight: 650;
+    }
+
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 8px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .nav-cta,
+    .button.primary {
+      color: var(--white);
+      background: var(--teal);
+      box-shadow: 0 12px 26px rgba(8, 127, 131, 0.24);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: var(--white);
+      border-color: var(--line);
+    }
+
+    .nav-cta:hover,
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 94vh;
+      display: grid;
+      align-items: end;
+      padding: 112px clamp(18px, 5vw, 64px) 46px;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: url("assets/writing-service-hero.png") center right / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(248, 246, 239, 0.98) 0%, rgba(248, 246, 239, 0.86) 38%, rgba(248, 246, 239, 0.28) 72%);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: end;
+      width: min(1180px, 100%);
+      padding-bottom: clamp(18px, 4vw, 54px);
+    }
+
+    .hero-content {
+      width: min(720px, 100%);
+      padding-bottom: 0;
+    }
+
+    .hero-pricing {
+      padding: 22px;
+      border: 1px solid rgba(220, 228, 232, 0.9);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      align-self: center;
+    }
+
+    .hero-pricing h2 {
+      margin: 0;
+      font-size: 1.45rem;
+      line-height: 1.15;
+    }
+
+    .hero-pricing p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-pricing .button {
+      width: 100%;
+      margin-top: 18px;
+    }
+
+    .pricing-mini {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pricing-mini-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .pricing-mini-row span {
+      color: #34414e;
+      font-size: 0.94rem;
+      font-weight: 750;
+    }
+
+    .pricing-mini-row strong {
+      white-space: nowrap;
+      color: var(--teal-dark);
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--teal-dark);
+      font-size: 0.82rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 3px;
+      background: var(--coral);
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 680px;
+      font-size: clamp(2.15rem, 5vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .hero-text {
+      max-width: 580px;
+      margin: 24px 0 0;
+      color: #34414e;
+      font-size: clamp(1.04rem, 2vw, 1.28rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .hero-work {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      width: min(860px, 100%);
+      margin-top: 34px;
+    }
+
+    .work-card {
+      min-height: 116px;
+      padding: 16px;
+      border: 1px solid rgba(220, 228, 232, 0.9);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 14px 26px rgba(23, 33, 43, 0.08);
+    }
+
+    .work-card strong {
+      display: block;
+      color: var(--teal-dark);
+      font-size: 0.95rem;
+    }
+
+    .work-card span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 650;
+      line-height: 1.45;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      width: min(760px, 100%);
+      margin-top: 42px;
+      overflow: hidden;
+      border: 1px solid rgba(220, 228, 232, 0.9);
+      border-radius: 8px;
+      background: var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      min-height: 98px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    section {
+      padding: clamp(62px, 8vw, 108px) clamp(18px, 5vw, 64px);
+    }
+
+    .section-head {
+      width: min(860px, 100%);
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--coral);
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      max-width: 660px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .plans {
+      background: var(--white);
+    }
+
+    .about {
+      background: #ffffff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(28px, 5vw, 70px);
+      align-items: center;
+    }
+
+    .about-panel {
+      padding: clamp(24px, 4vw, 42px);
+      border-radius: 8px;
+      background: #17313a;
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .about-panel strong {
+      display: block;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1;
+    }
+
+    .about-panel span {
+      display: block;
+      margin-top: 10px;
+      color: #c3d0d4;
+      font-weight: 700;
+    }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .about-point {
+      min-height: 126px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8f6ef;
+    }
+
+    .about-point h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .about-point p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .plan-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 430px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .plan-card.featured {
+      border-color: rgba(8, 127, 131, 0.42);
+      box-shadow: var(--shadow);
+    }
+
+    .badge {
+      align-self: flex-start;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--teal-dark);
+      background: #dff4f1;
+      font-size: 0.78rem;
+      font-weight: 850;
+    }
+
+    .plan-card h3 {
+      margin: 20px 0 6px;
+      font-size: 1.35rem;
+    }
+
+    .plan-note {
+      min-height: 52px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .price {
+      margin: 22px 0;
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .price small {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 11px;
+      margin: 0 0 24px;
+      padding: 0;
+      list-style: none;
+      color: #34414e;
+      font-size: 0.94rem;
+    }
+
+    .feature-list li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .check {
+      display: grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .plan-card .button {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .services {
+      background: #eef3f1;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(28px, 5vw, 68px);
+      align-items: start;
+    }
+
+    .service-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .service-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid rgba(220, 228, 232, 0.8);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      color: var(--teal-dark);
+      background: #dff4f1;
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+
+    .service-item h3 {
+      margin: 0 0 4px;
+      font-size: 1.08rem;
+    }
+
+    .service-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .process {
+      background: var(--paper);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      counter-reset: step;
+    }
+
+    .step {
+      min-height: 224px;
+      padding: 22px;
+      border-top: 4px solid var(--teal);
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 16px 30px rgba(23, 33, 43, 0.08);
+      counter-increment: step;
+    }
+
+    .step::before {
+      content: "0" counter(step);
+      display: block;
+      margin-bottom: 28px;
+      color: var(--gold);
+      font-size: 1.9rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact {
+      color: var(--white);
+      background: #17313a;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(28px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .contact h2 {
+      color: var(--white);
+    }
+
+    .contact .section-copy {
+      color: #c3d0d4;
+    }
+
+    .contact-panel {
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      color: #dbe6e8;
+      font-weight: 700;
+    }
+
+    .contact-row:last-child {
+      border-bottom: 0;
+    }
+
+    .contact-row span {
+      color: #9fb3b9;
+      font-weight: 650;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .contact .button.primary {
+      background: var(--coral);
+      box-shadow: 0 14px 28px rgba(232, 109, 77, 0.22);
+    }
+
+    .contact .button.secondary {
+      color: var(--white);
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px clamp(18px, 5vw, 64px);
+      color: #64727d;
+      background: #10232a;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1050px) {
+      .pricing-grid,
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .service-grid,
+      .about-grid,
+      .hero-inner,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        line-height: 1.62;
+      }
+
+      .nav {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 14px;
+        padding: 16px 18px 12px;
+      }
+
+      .nav-links {
+        grid-column: 1 / -1;
+        width: 100%;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        font-size: 0.82rem;
+        scrollbar-width: none;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-links a {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.82);
+      }
+
+      .brand {
+        min-width: 0;
+        font-size: 1rem;
+      }
+
+      .brand-mark {
+        width: 34px;
+        height: 34px;
+      }
+
+      .nav-cta {
+        width: auto;
+        min-height: 40px;
+        padding: 0 16px;
+        font-size: 0.86rem;
+        white-space: nowrap;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 46px 20px 42px;
+        align-items: start;
+      }
+
+      .hero::before {
+        background-position: 72% center;
+        opacity: 0.46;
+      }
+
+      .hero::after {
+        background: linear-gradient(180deg, rgba(248, 246, 239, 0.98) 0%, rgba(248, 246, 239, 0.94) 58%, rgba(248, 246, 239, 0.86) 100%);
+      }
+
+      .hero-content {
+        padding-bottom: 0;
+      }
+
+      .hero-inner {
+        gap: 24px;
+        padding-bottom: 0;
+      }
+
+      .hero-pricing {
+        padding: 20px;
+      }
+
+      .pricing-mini-row {
+        padding: 15px;
+      }
+
+      .eyebrow {
+        margin-bottom: 14px;
+        font-size: 0.72rem;
+        line-height: 1.35;
+      }
+
+      .eyebrow::before {
+        width: 22px;
+      }
+
+      h1 {
+        max-width: 520px;
+        font-size: clamp(2rem, 9vw, 3rem);
+        line-height: 1.08;
+      }
+
+      .hero-text {
+        margin-top: 18px;
+        font-size: 1.02rem;
+      }
+
+      .hero-actions,
+      .hero-work,
+      .hero-stats {
+        margin-top: 24px;
+      }
+
+      .hero-stats,
+      .hero-work,
+      .about-points,
+      .pricing-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .work-card,
+      .stat {
+        min-height: auto;
+      }
+
+      .hero-work {
+        gap: 10px;
+      }
+
+      .work-card {
+        padding: 16px;
+      }
+
+      .hero-stats {
+        gap: 10px;
+        border: 0;
+        background: transparent;
+        box-shadow: 0 14px 30px rgba(23, 33, 43, 0.1);
+      }
+
+      .stat {
+        border: 1px solid rgba(220, 228, 232, 0.9);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .stat strong {
+        font-size: 1.45rem;
+      }
+
+      .hero-actions,
+      .contact-actions {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .button,
+      .contact-actions .button,
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      section {
+        padding: 58px 20px;
+      }
+
+      h2 {
+        font-size: clamp(1.85rem, 8vw, 2.55rem);
+        line-height: 1.08;
+      }
+
+      .section-head {
+        margin-bottom: 28px;
+      }
+
+      .section-copy {
+        font-size: 1rem;
+      }
+
+      .about-panel {
+        padding: 26px;
+      }
+
+      .about-points {
+        gap: 12px;
+      }
+
+      .about-point,
+      .plan-card,
+      .service-item,
+      .step,
+      .contact-panel {
+        box-shadow: 0 10px 24px rgba(23, 33, 43, 0.07);
+      }
+
+      .plan-card {
+        min-height: auto;
+        padding: 24px;
+      }
+
+      .price {
+        margin: 18px 0;
+        font-size: 2rem;
+      }
+
+      .feature-list {
+        gap: 13px;
+      }
+
+      .service-item {
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+        padding: 18px;
+      }
+
+      .icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+      }
+
+      .step {
+        min-height: auto;
+        padding: 24px;
+      }
+
+      .step::before {
+        margin-bottom: 16px;
+      }
+
+      .contact-panel {
+        padding: 24px;
+      }
+
+      .contact-row {
+        display: grid;
+        gap: 4px;
+        padding: 14px 0;
+      }
+
+      footer {
+        flex-direction: column;
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .brand {
+        max-width: 190px;
+      }
+
+      .nav-cta {
+        padding: 0 14px;
+      }
+
+      .hero {
+        padding: 38px 18px 38px;
+      }
+
+      h1 {
+        font-size: clamp(1.9rem, 10vw, 2.65rem);
+      }
+
+      .hero-text,
+      .section-copy {
+        font-size: 0.98rem;
+      }
+
+      section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="YDC Media home">
+        <img class="brand-mark" src="assets/ydc-logo.png" alt="YDC Media logo">
+        <span>YDC Media</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#plans">Plans</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+      </div>
+      <a class="nav-cta" href="#contact">Order Now</a>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">Article and LinkedIn post writing service</p>
+          <h1>We write content that helps you publish faster and look professional.</h1>
+          <p class="hero-text">YDC Media writes articles, SEO blogs, LinkedIn posts, website copy, and business writeups with a clean brief, 1-hour delivery, and simple pricing.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#plans">View Plans</a>
+            <a class="button secondary" href="#contact">Request a Custom Topic</a>
+          </div>
+          <div class="hero-work" aria-label="What we do and the impact we create">
+            <div class="work-card">
+              <strong>What we do</strong>
+              <span>Write articles, LinkedIn posts, blogs, captions, and website content.</span>
+            </div>
+            <div class="work-card">
+              <strong>Impact for you</strong>
+              <span>Save writing time and get publish-ready content without stress.</span>
+            </div>
+            <div class="work-card">
+              <strong>Business result</strong>
+              <span>Show up online with clearer posts, stronger topics, and consistent content.</span>
+            </div>
+          </div>
+        </div>
+        <aside class="hero-pricing" aria-label="Landing page pricing">
+          <h2>Quick pricing</h2>
+          <p>Simple rates with 1-hour delivery.</p>
+          <div class="pricing-mini">
+            <div class="pricing-mini-row">
+              <span>1 Article</span>
+              <strong>Rs. 250</strong>
+            </div>
+            <div class="pricing-mini-row">
+              <span>4 Articles</span>
+              <strong>Rs. 1000</strong>
+            </div>
+            <div class="pricing-mini-row">
+              <span>1 LinkedIn Post</span>
+              <strong>Rs. 59</strong>
+            </div>
+          </div>
+          <a class="button primary" href="#contact">Order on WhatsApp</a>
+        </aside>
+      </div>
+    </header>
+
+    <section class="about" id="about">
+      <div class="about-grid">
+        <div class="about-panel">
+          <strong>YDC Media</strong>
+          <span>A personal content writing service built for fast, clear, and useful articles and LinkedIn posts.</span>
+        </div>
+        <div>
+          <p class="section-kicker">About me</p>
+          <h2>I turn your ideas into polished content people can actually read.</h2>
+          <p class="section-copy">Hi, I run YDC Media to help businesses, students, creators, and website owners get quality articles and LinkedIn posts without stress. I focus on understanding your topic, writing in a clear style, and delivering content that is ready to publish within 1 hour.</p>
+          <div class="about-points">
+            <article class="about-point">
+              <h3>Clear Writing</h3>
+              <p>I organize every article with readable headings and a smooth flow.</p>
+            </article>
+            <article class="about-point">
+              <h3>Topic Research</h3>
+              <p>I study your topic before writing so the content feels useful.</p>
+            </article>
+            <article class="about-point">
+              <h3>Easy Ordering</h3>
+              <p>Send your brief, choose a plan, and receive a publish-ready draft.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plans" id="plans">
+      <div class="section-head">
+        <p class="section-kicker">Plans</p>
+        <h2>Simple pricing for consistent content.</h2>
+        <p class="section-copy">Choose one article, a 4 article pack, or a LinkedIn post. Every plan includes original writing, topic alignment, headings, and clean formatting.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <article class="plan-card">
+          <span class="badge">Starter</span>
+          <h3>Single Article</h3>
+          <p class="plan-note">Best for one blog post, website update, or test order.</p>
+          <div class="price">Rs. 250 <small>/ article</small></div>
+          <ul class="feature-list">
+            <li><span class="check">✓</span><span>1 article up to 1000 words</span></li>
+            <li><span class="check">✓</span><span>SEO-friendly title and headings</span></li>
+            <li><span class="check">✓</span><span>Basic topic research</span></li>
+            <li><span class="check">✓</span><span>Delivery in 1 hour</span></li>
+          </ul>
+          <a class="button secondary" href="#contact">Choose Starter</a>
+        </article>
+
+        <article class="plan-card featured">
+          <span class="badge">Most Popular</span>
+          <h3>4 Article Pack</h3>
+          <p class="plan-note">A useful pack for multiple blog posts, website updates, or regular content.</p>
+          <div class="price">Rs. 1000 <small>/ 4 articles</small></div>
+          <ul class="feature-list">
+            <li><span class="check">✓</span><span>4 articles up to 1000 words each</span></li>
+            <li><span class="check">✓</span><span>Keyword placement and meta description</span></li>
+            <li><span class="check">✓</span><span>Content calendar suggestions</span></li>
+            <li><span class="check">✓</span><span>Delivery timeline confirmed before order</span></li>
+          </ul>
+          <a class="button primary" href="#contact">Choose 4 Articles</a>
+        </article>
+
+        <article class="plan-card">
+          <span class="badge">Social</span>
+          <h3>LinkedIn Post</h3>
+          <p class="plan-note">Best for personal branding, business updates, and professional announcements.</p>
+          <div class="price">Rs. 59 <small>/ post</small></div>
+          <ul class="feature-list">
+            <li><span class="check">✓</span><span>1 LinkedIn post with clear hook</span></li>
+            <li><span class="check">✓</span><span>Professional tone and simple structure</span></li>
+            <li><span class="check">✓</span><span>Hashtag suggestions included</span></li>
+            <li><span class="check">✓</span><span>Delivery in 1 hour</span></li>
+          </ul>
+          <a class="button secondary" href="#contact">Choose LinkedIn</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="service-grid">
+        <div class="section-head">
+          <p class="section-kicker">What you can order</p>
+          <h2>Writing for blogs, LinkedIn, brands, and growing websites.</h2>
+          <p class="section-copy">Share the topic, audience, keyword, and tone. Your article or LinkedIn post comes back structured, readable, and prepared for publishing.</p>
+        </div>
+        <ul class="service-list">
+          <li class="service-item">
+            <span class="icon">B</span>
+            <div>
+              <h3>Blog Articles</h3>
+              <p>Helpful posts that explain topics clearly and keep readers moving.</p>
+            </div>
+          </li>
+          <li class="service-item">
+            <span class="icon">S</span>
+            <div>
+              <h3>SEO Content</h3>
+              <p>Search-friendly articles with natural keyword usage and clean headings.</p>
+            </div>
+          </li>
+          <li class="service-item">
+            <span class="icon">L</span>
+            <div>
+              <h3>LinkedIn Posts</h3>
+              <p>Professional posts for personal branding, business updates, and audience engagement.</p>
+            </div>
+          </li>
+          <li class="service-item">
+            <span class="icon">W</span>
+            <div>
+              <h3>Website Copy</h3>
+              <p>Service pages, about pages, product descriptions, and landing page text.</p>
+            </div>
+          </li>
+          <li class="service-item">
+            <span class="icon">R</span>
+            <div>
+              <h3>Research Writeups</h3>
+              <p>Longer explainers, industry summaries, and informative business articles.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="section-head">
+        <p class="section-kicker">Process</p>
+        <h2>From brief to final draft in four steps.</h2>
+        <p class="section-copy">The workflow stays simple so you always know what is being written, when it will arrive, and what can be revised.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <h3>Send Your Topic</h3>
+          <p>Share topic, keyword, audience, reference links, and any preferred tone.</p>
+        </article>
+        <article class="step">
+          <h3>Confirm Plan</h3>
+          <p>Pick a package and deadline based on word count and article depth.</p>
+        </article>
+        <article class="step">
+          <h3>Article Writing</h3>
+          <p>The article is researched, drafted, formatted, and checked for clarity.</p>
+        </article>
+        <article class="step">
+          <h3>Review and Publish</h3>
+          <p>Receive the final draft with up to two minor revisions included.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-wrap">
+        <div>
+          <p class="section-kicker">Start writing</p>
+          <h2>Ready to order your first article?</h2>
+          <p class="section-copy">Send your topic and preferred plan. For urgent deadlines, bulk orders, or technical topics, request a quick custom quote before payment.</p>
+          <div class="contact-actions">
+            <a class="button primary" href="mailto:went2study@gmail.com?subject=Article%20Writing%20Order">Email Your Topic</a>
+            <a class="button secondary" href="https://wa.me/919509017551">WhatsApp 9509017551</a>
+          </div>
+        </div>
+        <div class="contact-panel" aria-label="Order details">
+          <div class="contact-row">
+            <span>Base price</span>
+            <strong>Rs. 250 / article</strong>
+          </div>
+          <div class="contact-row">
+            <span>Standard length</span>
+            <strong>Up to 1000 words</strong>
+          </div>
+          <div class="contact-row">
+            <span>Delivery</span>
+            <strong>1 hour</strong>
+          </div>
+          <div class="contact-row">
+            <span>Revisions</span>
+            <strong>2 minor rounds</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 YDC Media. Professional article and LinkedIn post writing service.</span>
+      <span>Original content, clean structure, simple pricing.</span>
+    </footer>
+  </main>
+</body>
+</html>
